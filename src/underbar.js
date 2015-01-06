@@ -354,6 +354,25 @@
   // input array. For a tip on how to make a copy of an array, see:
   // http://mdn.io/Array.prototype.slice
   _.shuffle = function(array) {
+
+    var shuffledArray;
+
+    (function randomize (){
+
+      var arrInitial = Array.prototype.slice.call(array); //Copy original array
+
+      var wildcard = Math.floor((Math.random()*array.length)+1); //generate a random variable between 1 and the length of the array
+
+      var arrModified = arrInitial.splice(0, wildcard); // create a new array consisting of some elements of the arrInitial array
+
+      arrModified.reverse(); //modify the 'modified' array
+
+      shuffledArray = arrInitial.concat(arrModified); //combine the modified array with the remainder of the initial array
+
+    })();
+
+    return shuffledArray;    
+      
   };
 
 
